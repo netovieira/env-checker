@@ -21,7 +21,7 @@ if (!repoUrl) {
   process.exit(1);
 }
 
-const baseDir = fs.mkdtempSync(path.join(os.tmpdir(), 'avnt-env-checker-'));
+const baseDir = fs.mkdtempSync(path.join(os.tmpdir(), 'avnt-env-scan-'));
 const tempDir = projectPath ? path.join(baseDir, projectPath) : baseDir;
 
 try {
