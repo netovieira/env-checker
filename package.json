@@ -1,6 +1,6 @@
 {
   "name": "avnt-env-checker",
-  "version": "2.0.2",
+  "version": "2.1.2",
   "description": "Um pacote para listar e/ou verificar se todas as variáveis de ambiente usadas em um projeto (local, git ou remoto) estão declaradas em um arquivo de configuração (.env, .json) ou em um objeto diretamente.",
   "main": "index.js",
   "scripts": {
