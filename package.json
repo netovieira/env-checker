@@ -1,13 +1,15 @@
 {
   "name": "avnt-env-checker",
-  "version": "1.2.2",
-  "description": "Um pacote para listar e/ou verificar se todas as variáveis de ambiente usadas em um projeto estão declaradas em um arquivo de configuração (.env, .json) ou em um objeto diretamente.",
+  "version": "2.0.0",
+  "description": "Um pacote para listar e/ou verificar se todas as variáveis de ambiente usadas em um projeto (local, git ou remoto) estão declaradas em um arquivo de configuração (.env, .json) ou em um objeto diretamente.",
   "main": "index.js",
   "scripts": {
   },
   "bin": {
     "avnt-env-checker": "./bin/avnt-env-checker.js",
-    "avnt-env-scan": "./bin/avnt-env-scan.js"
+    "avnt-env-scan": "./bin/avnt-env-scan.js",
+    "avnt-env-checker-by-git": "./bin/avnt-env-checker-by-git.js",
+    "avnt-env-scan-by-git": "./bin/avnt-env-scan-by-git.js"
   },
   "dependencies": {
     "dotenv": "^16.4.5"
