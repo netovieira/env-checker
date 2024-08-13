@@ -1,0 +1,18 @@
+{
+  "name": "avnt-env-checker",
+  "version": "1.1.0",
+  "description": "Um pacote para verificar se todas as variáveis de ambiente usadas em um projeto estão declaradas em um arquivo de configuração (.env, .json) ou em um objeto diretamente.",
+  "main": "index.js",
+  "scripts": {
+  },
+  "bin": {
+    "avnt-env-checker": "./bin/avnt-env-checker.js",
+    "avnt-env-scan": "./bin/avnt-env-scan.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  },
+  "author": "Anthero Vieira Neto",
+  "email": "anthero@outlook.com.br",
+  "license": "ISC"
+}
