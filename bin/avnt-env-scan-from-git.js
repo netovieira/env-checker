@@ -26,9 +26,9 @@ const tempDir = projectPath ? path.join(baseDir, projectPath) : baseDir;
 
 try {
   cloneRepo(repoUrl, tempDir, branch);
-  console.log( getEnvironments(tempDir, debug) );
+  console.log(getEnvironments(tempDir, debug));
 } catch (error) {
   console.error('Error:', error.message);
 } finally {
-  fs.rmSync(tempDir, { recursive: true, force: true });
+  fs.rmSync(baseDir, { recursive: true, force: true });
 }
