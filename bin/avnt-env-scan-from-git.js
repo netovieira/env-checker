@@ -21,9 +21,8 @@ if (!repoUrl) {
   process.exit(1);
 }
 
-const tempDir = projectPath 
-? path.join(fs.mkdtempSync(path.join(os.tmpdir(), 'avnt-env-checker-'), projectPath)) 
-: fs.mkdtempSync(path.join(os.tmpdir(), 'avnt-env-checker-'));
+const baseDir = fs.mkdtempSync(path.join(os.tmpdir(), 'avnt-env-checker-'));
+const tempDir = projectPath ? path.join(baseDir, projectPath) : baseDir;
 
 try {
   cloneRepo(repoUrl, tempDir, branch);

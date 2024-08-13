@@ -20,16 +20,18 @@ function findEnvSource(projectDir, envFileName) {
 }
 
 const repoUrl = process.argv[2];
-const envFile = process.argv[4] || '.env';
 const branch = process.argv[3] || 'main';
-const debug = !['0', 'false'].includes((process.argv[5] || 'false').toLowerCase());
+const envFile = process.argv[4] || '.env';
+const projectPath = process.argv[5] || false;
+const debug = !['0', 'false'].includes((process.argv[6] || 'false').toLowerCase());
 
 if (!repoUrl) {
-  console.error('Usage/Uso: avnt-env-checker-from-git <repo-url> <branch-name=main> <env-file-path=.env> <debug-mode=false>');
+  console.error('Usage/Uso: avnt-env-checker-from-git <repo-url> <branch-name=main> <env-file-path=.env> <project-path=""> <debug-mode=false>');
   process.exit(1);
 }
 
-const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'env-checker-'));
+const baseDir = fs.mkdtempSync(path.join(os.tmpdir(), 'avnt-env-checker-'));
+const tempDir = projectPath ? path.join(baseDir, projectPath) : baseDir;
 
 try {
   cloneRepo(repoUrl, tempDir, branch);
