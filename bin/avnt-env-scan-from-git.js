@@ -12,9 +12,9 @@ function cloneRepo(repoUrl, targetDir, branch) {
 }
 
 const repoUrl = process.argv[2];
-const projectPath = process.argv[3] || false;
-const debug = !['0', 'false'].includes((process.argv[4] || 'false').toLowerCase());
-const branch = process.argv[5] || "main";
+const branch = process.argv[3] || "main";
+const projectPath = process.argv[4] || false;
+const debug = !['0', 'false'].includes((process.argv[5] || 'false').toLowerCase());
 
 if (!repoUrl) {
   console.error('Usage/Uso: avnt-env-scan-from-git <repo-url> <branch-name="main"> <project-path=""> <debug-mode=false>');
