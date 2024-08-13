@@ -100,10 +100,6 @@ check_env_variables:
 
 - [dotenv](https://www.npmjs.com/package/dotenv) - Para carregar variáveis de ambiente a partir de arquivos `.env`.
 
-## Licença
-
-Este projeto está licenciado sob a Licença ISC - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
 ## Autor
 
 Anthero Vieira Neto  
