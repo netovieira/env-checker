@@ -146,9 +146,15 @@ function checkEnvVariables(envSource, projectDir = process.cwd(), debug = false,
     missingVariables.forEach(envVar => {
       console.error(`A variável de ambiente ${envVar} não está declarada no objeto de variáveis de ambiente.`);
     });
+    
+    if (typeof envSource === 'string')
+      console.error(`Adicione as variáveis faltantes no arquivo ${envSource} para seguir!`);
+    else
+      console.error(`Adicione as variáveis faltantes no objeto fornecido para validação!`);
+    
     process.exit(1);
   } else {
-    console.log('Todas as variáveis de ambiente estão declaradas corretamente.');
+    console.log('Todas as variáveis de ambiente estão declaradas corretamente!');
   }
 }
 
