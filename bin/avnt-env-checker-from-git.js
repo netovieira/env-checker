@@ -6,9 +6,9 @@ const path = require('path');
 const os = require('os');
 const { checkEnvVariables } = require('../index.js');
 
-function cloneRepo(repoUrl, targetDir) {
-  console.log(`Cloning repository: ${repoUrl}`);
-  execSync(`git clone ${repoUrl} ${targetDir}`, { stdio: 'inherit' });
+function cloneRepo(repoUrl, targetDir, branch) {
+  console.log(`Cloning repository: ${repoUrl}, branch: ${branch}`);
+  execSync(`git clone -b ${branch} ${repoUrl} ${targetDir}`, { stdio: 'inherit' });
 }
 
 function findEnvSource(projectDir, envFileName) {
@@ -20,18 +20,19 @@ function findEnvSource(projectDir, envFileName) {
 }
 
 const repoUrl = process.argv[2];
-const envFile = process.argv[3] || '.env';
-const debug = !['0', 'false'].includes((process.argv[4] || 'false').toLowerCase());
+const envFile = process.argv[4] || '.env';
+const branch = process.argv[3] || 'main';
+const debug = !['0', 'false'].includes((process.argv[5] || 'false').toLowerCase());
 
 if (!repoUrl) {
-  console.error('Usage: avnt-env-checker-by-git <repo-url> <env-file-path=.env> <debug-mode=false>');
+  console.error('Usage/Uso: avnt-env-checker-from-git <repo-url> <branch-name=main> <env-file-path=.env> <debug-mode=false>');
   process.exit(1);
 }
 
 const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'env-checker-'));
 
 try {
-  cloneRepo(repoUrl, tempDir);
+  cloneRepo(repoUrl, tempDir, branch);
   const envSourcePath = findEnvSource(tempDir, envFile);
   console.log(`Found env source file: ${envSourcePath}`);
   

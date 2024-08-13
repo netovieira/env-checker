@@ -1,6 +1,6 @@
 # avnt-env-checker
 
-`avnt-env-checker` é uma ferramenta para verificar e gerenciar variáveis de ambiente usadas em seu projeto. Ela verifica se todas as variáveis de ambiente estão declaradas em um arquivo de configuração (`.env`, `.json`) ou em um objeto diretamente, e também permite listar todas as variáveis de ambiente usadas no projeto. Agora também suporta verificação e listagem de variáveis de ambiente em repositórios Git remotos.
+`avnt-env-checker` é uma ferramenta para verificar e gerenciar variáveis de ambiente usadas em seu projeto. Ela verifica se todas as variáveis de ambiente estão declaradas em um arquivo de configuração (`.env`, `.json`) ou em um objeto diretamente, e também permite listar todas as variáveis de ambiente usadas no projeto. Agora também suporta verificação e listagem de variáveis de ambiente em repositórios Git remotos, incluindo a especificação da branch.
 
 ## Instalação
 
@@ -34,18 +34,19 @@ avnt-env-scan <path-to-project-directory>
 
 3. Para verificar variáveis de ambiente em um repositório Git remoto:
 ```bash
-avnt-env-checker-by-git <repo-url> <env-file-path=.env> <debug-mode=false>
+avnt-env-checker-from-git <repo-url> <env-file-path=.env> <branch=main> <debug-mode=false>
 ```
 
 4. Para listar todas as variáveis de ambiente usadas em um repositório Git remoto:
 ```bash
-avnt-env-scan-by-git <repo-url> <debug-mode=false>
+avnt-env-scan-from-git <repo-url> <branch=main> <debug-mode=false>
 ```
 
 - `<path-to-env-file-or-json>`: Caminho para um arquivo `.env`, `.json`, ou um objeto contendo as variáveis de ambiente.
 - `<path-to-project-directory>`: Caminho para o diretório raiz do projeto onde a verificação será realizada.
 - `<repo-url>`: URL do repositório Git remoto.
 - `<env-file-path>`: Caminho para o arquivo de ambiente no repositório (padrão é `.env`).
+- `<branch>`: Nome da branch a ser verificada (padrão é `main`).
 - `<debug-mode>`: Ativa o modo de depuração (padrão é `false`).
 
 ### Exemplo de Uso no Código
@@ -106,7 +107,7 @@ check_env_variables_remote:
   before_script:
     - npm install -g avnt-env-checker
   script:
-    - avnt-env-checker-by-git $CI_REPOSITORY_URL .env false
+    - avnt-env-checker-from-git $CI_REPOSITORY_URL .env $CI_COMMIT_BRANCH false
 ```
 
 ## Funcionalidades
@@ -117,6 +118,7 @@ check_env_variables_remote:
 - Permite personalização de expressões regulares e extensões de arquivo para busca de variáveis.
 - Modo de depuração para ajudar na resolução de problemas.
 - Suporte para verificação e listagem de variáveis de ambiente em repositórios Git remotos.
+- Permite especificar a branch a ser verificada em repositórios Git remotos.
 
 ## Dependências
 
